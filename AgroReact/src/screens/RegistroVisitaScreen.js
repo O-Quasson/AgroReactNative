@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+ import React, { useState } from 'react';
 import { View, Text, ScrollView, Alert, Image, FlatList, TextInput, Button } from 'react-native';
 import * as Location from 'expo-location';
 import * as ImagePicker from 'expo-image-picker';
@@ -66,7 +66,7 @@ export default function RegistroVisitaScreen() {
         const {status, canAskAgain} = await ImagePicker.requestCameraPermissionsAsync();
 
         //!==
-        if(status == 'granted'){
+        if(status !== 'granted'){
 
             if(!canAskAgain){
                 Alert.alert("cu", "cu que brilha");
@@ -108,6 +108,11 @@ export default function RegistroVisitaScreen() {
 
     const finalizarRelatorioAuditoria = () => {
 
+        if(Math.sqrt(x*x + y*y + z*z)>2.0){
+            setTravado(true);
+            return;
+        }
+
         if(!localizacao || !imagemEvidencia || !contatoSelectionado){
             Alert.alert('Incorformidade de Dados', 'Todos os critérios de auditoria (GPS, evidência visual e produtor vinculado) devem ser preenchidos');
             return;
@@ -117,11 +122,7 @@ export default function RegistroVisitaScreen() {
     }
 
     function botao() {
-        if(Math.sqrt(x*x + y*y + z*z)>2.0){
-            <Button title="Instabilidade Física Detectada"/>
-        }else{
-            <BotaoCustomizado titulo ="Finalizar e assinar auditoria" onPress={finalizarRelatorioAuditoria} tipo='sucess' />
-        }
+        
     }
 
     function insiraFiltro() {
@@ -170,11 +171,11 @@ export default function RegistroVisitaScreen() {
                     // data={listaContatosDisponiveis}
                     data={listaFiltro}
                     keyExtractor={(item) => item.id}
-                    scrollEnabled={false}
+                    scrollEnabled={true}
                     renderItem={({item}) => (
                         <View style={[{display: 'flex', flexDirection: 'column', border: '2px solid rgb(63, 74, 109)', borderRadius: 12, padding: 12, marginBottom: 12, gap: 5}]}>
                             <View>
-                                <Text style={globalStyles.itemListaContato} onPress={() => setContatoSelecionado(item)} style={[{fontWeight: 'bold', fontSize: 20}]}>
+                                <Text style={globalStyles.itemListaContato [{fontWeight: 'bold', fontSize: 20}]} onPress={() => setContatoSelecionado(item)}>
                                     {/* {item.name} */}
                                     {item.id}
                                 </Text>
@@ -190,13 +191,12 @@ export default function RegistroVisitaScreen() {
                         
                     )}
                     style={[{height: 300, padding: 12}]}
-                    scrollEnabled={true}
                     showsVerticalScrollIndicator={true}
 
                 />
             </View>
 
-            {botao()}
+            {travar ? <Button title="Instabilidade Física Detectada"/> : <BotaoCustomizado titulo ="Finalizar e assinar auditoria" onPress={finalizarRelatorioAuditoria} tipo='sucess' />}
 
             <View style={{ height: 40 }} />
         </ScrollView>

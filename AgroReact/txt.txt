@@ -1,0 +1,63 @@
+Nesta atividade prática, você assumirá o papel de Engenheiro de Software Mobile e terá a missão de evoluir a aplicação de Registro de Visitas Técnicas Agrícolas (ou integrar essas soluções no seu próprio projeto de curso).
+
+
+
+1. Escolha o Seu Nível de Desafio
+
+Nível Júnior
+Desafio: Tratamento avançado de permissões negadas.
+
+Missão: No recurso de captura de imagem da câmera, valide o retorno do método de permissão. Caso o usuário selecione "Não perguntar novamente" (canAskAgain: false), o aplicativo não deve apenas exibir um alerta genérico, mas sim direcionar o usuário com instruções claras para a abertura manual das configurações do sistema operacional.
+
+Nível Pleno
+Desafio: Telemetria com Acelerômetro.
+
+Missão: Implemente uma trava de segurança baseada em movimento. Durante o fechamento da auditoria, utilize o sensor Accelerometer para calcular a aceleração vetorial agregada. Se a aceleração ultrapassar a taxa de 2.0g (indicando movimentação brusca ou queda do aparelho), o envio deve ser bloqueado com o alerta: "Instabilidade Física Detectada".
+
+Nível Sênior
+Desafio: Otimização de alta performance e filtragem em massa.
+
+Missão: Refatore a busca de contatos para suportar cenários reais de grandes empresas (mais de 5.000 registros). Implemente carregamento paginado sob demanda (scroll infinito com pageSize e pageOffset), adicione um campo de busca (TextInput) que filtre os nomes diretamente na consulta nativa e utilize uma FlatList pura com reuso de memória para evitar vazamento de RAM e lags na interface.
+
+2. Requisitos Adicionais do Projeto
+Para elevar o nível da entrega, você deverá implementar os seguintes requisitos técnicos na sua aplicação:
+
+Requisitos Funcionais (RF)
+RF01 - Histórico Local e Persistência: Os registros de auditoria/visita concluídos devem ser salvos localmente no dispositivo (utilizando AsyncStorage ou SQLite), permitindo consultar exibições passadas mesmo sem conexão com a internet.
+
+RF02 - Feedback Visual de Precisão de GPS: O aplicativo deve exibir um indicador visual de cor (Verde: alta precisão < 10m; Amarelo: média precisão entre 10m e 30m; Vermelho: baixa precisão > 30m) referente à qualidade do sinal de localização capturado.
+
+Requisitos Não Funcionais (RNF)
+RNF01 - Degradação Graciosa e Tratamento de Erros: O app não pode quebrar (crash) caso algum sensor ou recurso de hardware esteja desativado no aparelho (como GPS desligado ou ausência de câmera). Exiba mensagens amigáveis informando o estado do sistema.
+
+RNF02 - UI/UX Responsiva: A interface deve adaptar-se perfeitamente a diferentes tamanhos de tela e orientações (Portrait/Landscape) sem quebra de layout nos cards ou botões.
+
+3. Uso de Inteligência Artificial
+Está liberado o uso de ferramentas de IA (ChatGPT, Claude, GitHub Copilot, Gemini, etc.) durante o desenvolvimento!
+
+Contudo, lembre-se: a IA é sua assistente, não a desenvolvedora principal. Com a adição dos requisitos funcionais e não funcionais, você precisará pesquisar, entender o código gerado, refatorar e validar se a lógica realmente funciona na prática. Na apresentação em vídeo, você precisará explicar a sua solução com clareza.
+
+4. Projeto Integrador / TCC (BentoTech)
+Se você já possui um projeto de TCC (BentoTech) ou Projeto Integrador em andamento que utilize dois ou mais recursos nativos do dispositivo (ex: Câmera + GPS, ou Contatos + Sensores), você poderá submeter o repositório e o vídeo do seu próprio projeto!
+
+Regra para Grupos: Todos os integrantes do mesmo grupo devem realizar a entrega individualmente informando o mesmo link do repositório e o mesmo link do vídeo.
+
+5. Critérios Avaliativos
+A sua avaliação será estruturada com base nos seguintes pilares:
+
+Atendimento às normas: Cumprimento do nível de desafio escolhido e dos requisitos solicitados.
+
+Pontualidade: Entrega realizada estritamente dentro do prazo limite.
+
+Design de Interface (UI/UX): Criatividade, organização visual, legibilidade e usabilidade do aplicativo.
+
+Resolução do Problema: Funcionamento correto do código, ausência de bugs críticos e clareza na explicação técnica do vídeo.
+
+6. Modo e Prazo de Entrega
+A entrega deve ser realizada na plataforma contendo:
+
+Link do Repositório do GitHub: O código deve estar organizado, com commits claros e o arquivo README.md documentando como rodar o projeto.
+
+Link do Vídeo (Máximo 3 minutos): Gravação de tela (com áudio) mostrando a aplicação rodando (em um emulador ou dispositivo físico) e uma breve explicação sobre como você resolveu o desafio técnico.
+
+Prazo Limite Improrrogável: 11/09 até às 23h59.
